@@ -1,4 +1,6 @@
-﻿namespace PingOneDemo.Model
+﻿using System.Collections.Generic;
+
+namespace PingOneDemo.Model
 {    
     public class Name
     {

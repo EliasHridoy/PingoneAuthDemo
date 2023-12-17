@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using PingoneAuthDemo.Services;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace PingoneAuthDemo.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View();
+            PingoneAuthServices pingoneAuthServices = new PingoneAuthServices();
+            var url = await pingoneAuthServices.Login();
+            return Redirect(url);
         }
 
         public ActionResult About()
