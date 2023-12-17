@@ -1,4 +1,6 @@
 ﻿using PingoneAuthDemo.Services;
+using PingOneDemo.Model;
+using System;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -8,22 +10,40 @@ namespace PingoneAuthDemo.Controllers
     {
         public async Task<ActionResult> Index()
         {
-            PingoneAuthServices pingoneAuthServices = new PingoneAuthServices();
-            var url = await pingoneAuthServices.Login();
-            return Redirect(url);
+            return View();
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            return View();
+        }
+        public async Task<ActionResult> Login()
+        {
+            PingoneAuthServices pingoneAuthServices = new PingoneAuthServices();
+            var url = await pingoneAuthServices.Login();
+            return Redirect(url);
+        }
+        public ActionResult SignUp(RegistrationViewModel model)
+        {
+            PingoneAuthServices pingoneAuthServices = new PingoneAuthServices();
+            try
+            {
+                pingoneAuthServices.Register(model);
+                return RedirectToAction("SignUpSuccess");
 
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("SignUpError");
+            }
+        }
+        public ActionResult SignUpSuccess()
+        {
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult SignUpError()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }

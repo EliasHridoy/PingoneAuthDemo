@@ -212,6 +212,8 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\PingOne\Index.cshtml" />
+    <Content Include="Views\Home\SignUpSuccess.cshtml" />
+    <Content Include="Views\Home\SignUpError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
